@@ -132,10 +132,12 @@ class FitFile:
             max_columns = max(max_columns, len(row))
             result.append(row)
 
-        header_row = ['Type', 'Local ID', 'Message']
+        # FIT CSV tool expected "Local Number"
+        header_row = ['Type', 'Local Number', 'Message']
         max_fields = (max_columns - 3) // 3
 
-        for i in range(max_fields):
+        # FIT fields are one indexed (https://developer.garmin.com/fit/protocol/)
+        for i in range(1, max_fields + 1):
             header_row.extend([f'Field {i}', f'Value {i}', f'Units {i}'])
 
         result.insert(0, header_row)

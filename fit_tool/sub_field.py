@@ -30,7 +30,7 @@ class SubField:
             if field is None or field.is_not_valid():
                 continue
 
-            if self.reference_map[field_id] and field.get_value() in self.reference_map:
+            if self.reference_map[field_id] and field.get_value() in self.reference_map[field_id]:
                 return True
 
         return False
